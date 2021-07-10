@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.annotation.RequestScope;
 import com.promineotech.jeep.entity.Jeep;
+import com.promineotech.jeep.entity.JeepModel;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -62,7 +63,7 @@ public interface JeepSalesController {
   @ResponseStatus(code = HttpStatus.OK)
   List<Jeep> fetchJeeps(
       @RequestParam(required = false) 
-        String model, 
+        JeepModel model, 
       @RequestParam(required = false)
         String trim);
 }
