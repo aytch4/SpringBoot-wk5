@@ -6,10 +6,13 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.multipart.MultipartFile;
 import com.promineotech.jeep.Constants;
 import com.promineotech.jeep.entity.Jeep;
 import com.promineotech.jeep.entity.JeepModel;
@@ -75,4 +78,8 @@ public interface JeepSalesController {
       @Pattern(regexp = "[\\w\\s]*")
       @RequestParam(required = false)
         String trim);
+  
+  @PostMapping("/{jeepPK}/image")
+  @ResponseStatus(code = HttpStatus.CREATED)
+  String uploadImage(@RequestParam("image") MultipartFile image, @PathVariable Long jeepPK);
 }
